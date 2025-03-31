@@ -1,7 +1,3 @@
-Here’s a detailed README template for your app. You can customize this further depending on your app's specifics.
-
----
-
 # **Peer Learning Reservation System - README**
 
 ## **Table of Contents:**
@@ -15,7 +11,6 @@ Here’s a detailed README template for your app. You can customize this further
 7. [Database Setup](#database-setup)
 8. [How to Use the App](#how-to-use-the-app)
 9. [Troubleshooting](#troubleshooting)
-10. [License](#license)
 
 ---
 
