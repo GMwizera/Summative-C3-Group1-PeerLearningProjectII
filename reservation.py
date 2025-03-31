@@ -1,3 +1,4 @@
+#this is the script that has the logic for allowing users to make a reservation at a venue
 import mysql.connector
 from db import connect_db
 
