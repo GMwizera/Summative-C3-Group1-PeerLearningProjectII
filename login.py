@@ -1,3 +1,4 @@
+import getpass
 import hashlib
 from db import connect_db
 
@@ -14,26 +15,36 @@ def register():
     
     hashed_password = hash_password(password)
     
+    cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+    if cursor.fetchone():
+        print("User already exists.")
+        conn.close()
+        return
+
     try:
-        cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", 
+        # Insert the new user into the users table
+        cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
                        (username, email, hashed_password))
         conn.commit()
         print("Registration successful!")
-    except:
+    except Exception as e:
         print("User already exists.")
-    
+
     conn.close()
 
+
 def login():
+    """Handles the user login process."""
     conn = connect_db()
     cursor = conn.cursor()
-    
+
     username = input("Enter username: ")
-    password = input("Enter password: ")
-    
+    password = getpass.getpass("Enter password: ")
+    # Fetch the stored hashed password for the user
     cursor.execute("SELECT password FROM users WHERE username = %s", (username,))
     user = cursor.fetchone()
-    
+
+    # Check if the user exists and the password matches
     if user and user[0] == hash_password(password):
         print("Login successful!")
         return username
@@ -45,6 +56,7 @@ if __name__ == "__main__":
     choice = input("Register (R) or Login (L)? ").strip().lower()
     if choice == 'r':
         register()
-    else:
+    elif choice == 'l':
         login()
-
+    else:
+        print("Invalid choice. Please enter 'R' for Register or 'L' for Login.")
