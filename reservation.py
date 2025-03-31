@@ -1,28 +1,30 @@
+import mysql.connector
 from db import connect_db
 
-def make_reservation(user_id):
+def make_reservation(username):
     conn = connect_db()
     cursor = conn.cursor()
-    
-    venue_id = input("Enter Venue ID to reserve: ").strip()
-    seats = int(input("Enter number of seats: "))
-    
-    cursor.execute("SELECT available_seats FROM venues WHERE venue_id = %s", (venue_id,))
-    available = cursor.fetchone()
-    
-    if available and available[0] >= seats:
-        cursor.execute("INSERT INTO reservations (user_id, venue_id, seats) VALUES (%s, %s, %s)", 
-                       (user_id, venue_id, seats))
-        cursor.execute("UPDATE venues SET available_seats = available_seats - %s WHERE venue_id = %s", 
-                       (seats, venue_id))
+
+    # Fetch user_id using the username
+    cursor.execute("SELECT user_id FROM users WHERE username = %s", (username,))
+    result = cursor.fetchone()
+
+    if result:
+        user_id = result[0]
+
+        venue_id = input("Enter Venue ID to reserve: ")
+        seats_reserved = input("Enter number of seats: ")  # Capture input here
+
+        # Insert reservation using user_id
+        cursor.execute("INSERT INTO reservations (user_id, venue_id, seats_reserved) VALUES (%s, %s, %s)",
+                       (user_id, venue_id, seats_reserved))
         conn.commit()
         print("Reservation successful!")
     else:
-        print("Not enough seats available.")
-    
+        print("User not found. Please register first.")
+
     conn.close()
 
 if __name__ == "__main__":
-    user_id = input("Enter your User ID: ").strip()  # Assume the user has logged in
-    make_reservation(user_id)
-
+    username = input("Enter your username: ")
+    make_reservation(username
