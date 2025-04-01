@@ -1,4 +1,4 @@
-# **Peer Learning Reservation System - README**
+# **Guide And Reservation App - README**
 
 ## **Table of Contents:**
 
@@ -16,7 +16,7 @@
 
 ## **Overview**
 
-The Peer Learning Reservation System is a Python-based command-line application that allows users to:
+Guide And Reservation App  is a Python-based command-line application that allows users to:
 
 - Register and log in.
 - Search available venues based on their category, price, and rating.
@@ -49,8 +49,8 @@ This app is designed for users who want to explore available venues, make reserv
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/PeerLearning-Reservation-System.git
-   cd PeerLearning-Reservation-System
+   git clone https://github.com/GMwizera/Summative-C3-Group1-PeerLearningProjectII.git
+   cd Summative-C3-Group1-PeerLearningProjectII
    ```
 
 2. **Install dependencies**:
@@ -60,12 +60,16 @@ This app is designed for users who want to explore available venues, make reserv
    ```
 
 3. **Set up the MySQL Database**:
-   - Set up a MySQL database using the instructions below. You can modify the database credentials in the app to connect it to your local or remote MySQL database.
+   - Set up a MySQL database using the instructions [here](#database-setup). You can modify the database credentials in the app to connect it to your local or remote MySQL database.
 
 4. **Run the app**:
    - Start the app by running:
      ```bash
      python3 main.py
+     ```
+   - If it's your first time and need to register, run:
+     ```bash
+     python3 login.py
      ```
 
 ---
@@ -195,7 +199,7 @@ This app is designed for users who want to explore available venues, make reserv
    - Ensure that the MySQL server is running and the database credentials are correct.
 
 - **"No venues found"**: 
-   - Ensure that venues have been correctly inserted into the database.
+   - It means the venue you're searching for is not found in the system.
 
 ---
 
