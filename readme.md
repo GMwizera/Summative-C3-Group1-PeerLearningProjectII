@@ -106,7 +106,7 @@ This app is designed for users who want to explore available venues, make reserv
 
 1. **User Registration**: 
    - User enters username, email, and password.
-   - The system checks if the username exists. If not, registration is successful.
+   - The system checks if the username exists.
 
 2. **Login**:
    - User enters username and password to log in.
