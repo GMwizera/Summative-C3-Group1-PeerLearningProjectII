@@ -33,6 +33,6 @@ def view_my_bookings(username):
 
     conn.close()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     username = input("Enter your username: ")
     view_my_bookings(username)

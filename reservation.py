@@ -28,4 +28,4 @@ def make_reservation(username):
 
 if __name__ == "__main__":
     username = input("Enter your username: ")
-    make_reservation(username
+    make_reservation(username)
